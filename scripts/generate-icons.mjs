@@ -24,7 +24,7 @@ function build() {
 		const content = fs.readFileSync(path.join(ICONS_DIR, file_path), 'utf-8');
 		const {
 			children,
-			// eslint-disable-next-line no-unused-vars
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			attributes: { xmlns, 'data-slot': slot, ...attrs }
 		} = SVG.parseSync(content);
 		let [type, name] = file_path.split('/');
@@ -43,9 +43,14 @@ function build() {
 
 	icons.forEach((icon) => {
 		const component = `
-<script>
-		/** @type {string | number | null | undefined} */
-		export let size = 24
+<script lang="ts">
+		import type { SvelteHTMLElements } from 'svelte/elements';
+
+		type $$Props = Omit<SvelteHTMLElements['svg'], 'width' | 'height'> & {
+			size?: string | number | null
+		}
+
+		export let size: $$Props['size'] = 24
 </script>
 
 <!--

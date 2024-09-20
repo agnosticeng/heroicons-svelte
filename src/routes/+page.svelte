@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import AcademicCap from '$lib/outline/AcademicCap.svelte';
 </script>
 

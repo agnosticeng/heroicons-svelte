@@ -3,10 +3,12 @@ import prettier from 'eslint-config-prettier';
 import plugin_prettier from 'eslint-plugin-prettier/recommended';
 import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
+import ts from 'typescript-eslint';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
 	js.configs.recommended,
+	...ts.configs.recommended,
 	...svelte.configs['flat/recommended'],
 	prettier,
 	plugin_prettier,
@@ -16,6 +18,14 @@ export default [
 			globals: {
 				...globals.browser,
 				...globals.node
+			}
+		}
+	},
+	{
+		files: ['**/*.svelte'],
+		languageOptions: {
+			parserOptions: {
+				parser: ts.parser
 			}
 		}
 	},
