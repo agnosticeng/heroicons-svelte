@@ -1,11 +1,11 @@
 {
-	"name": "@agnostic/heroicons-svelte",
+	"name": "@agnosticeng/heroicons-svelte",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
 		"preview": "vite preview",
-		"package": "svelte-kit sync && svelte-package --input src/lib && publint",
+		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "npm run package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
@@ -13,8 +13,19 @@
 		"format": "eslint . --fix",
 		"generate:icons": "node ./scripts/generate-icons.mjs",
 		"cleanup:icons": "find ./src/lib -name \"*.svelte\" -type f -exec rm -rf {} +",
-		"generate": "npm run cleanup:icons && npm run generate:icons && npm run format"
+		"generate": "npm run cleanup:icons && npm run generate:icons && npm run format",
+		"update_version": "node ./scripts/update-package.mjs"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/agnosticeng/heroicons-svelte.git"
+	},
+	"author": "Yann Amsellem",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/agnosticeng/heroicons-svelte/issues"
+	},
+	"homepage": "https://github.com/agnosticeng/heroicons-svelte#readme",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts"
@@ -33,6 +44,11 @@
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
 	"peerDependencies": {
 		"svelte": "^4.0.0"
 	},
@@ -47,6 +63,8 @@
 		"eslint-plugin-prettier": "^5.2.1",
 		"eslint-plugin-svelte": "^2.44.0",
 		"globals": "^15.9.0",
+		"heroicons": "^2.1.5",
+		"minimist": "^1.2.8",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.6",
 		"publint": "^0.2.11",
@@ -55,11 +73,5 @@
 		"svgson": "^5.3.1",
 		"typescript": "^5.6.2",
 		"vite": "^5.4.6"
-	},
-	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"type": "module",
-	"dependencies": {
-		"heroicons": "^2.1.5"
 	}
 }
