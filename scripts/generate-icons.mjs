@@ -4,7 +4,7 @@ import SVG from 'svgson';
 import { toPascalCase } from './utils/string.mjs';
 import { base64SVG } from './utils/svg.mjs';
 
-const ICONS_DIR = path.resolve(process.cwd(), './icons');
+const ICONS_DIR = new URL(import.meta.resolve('heroicons/24')).pathname;
 const OUTPUT_DIR = path.resolve(process.cwd(), './src/lib');
 
 /**
