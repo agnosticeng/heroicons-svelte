@@ -3,6 +3,7 @@ import path from 'node:path';
 import SVG from 'svgson';
 import { toPascalCase } from './utils/string.mjs';
 import { base64SVG } from './utils/svg.mjs';
+import { groupBy } from './utils/array.mjs';
 
 const ICONS_DIR = new URL(import.meta.resolve('heroicons/24')).pathname;
 const OUTPUT_DIR = path.resolve(process.cwd(), './src/lib');
@@ -75,6 +76,20 @@ function build() {
 
 		fs.writeFileSync(path.join(OUTPUT_DIR, icon.type, icon.componentName + '.svelte'), component);
 	});
+
+	const grouped = groupBy(icons, 'type');
+
+	for (const group in grouped) {
+		const grouped_icons = grouped[group];
+
+		const export_path = path.join(OUTPUT_DIR, group, 'index.ts');
+
+		const exports_ = grouped_icons.map(
+			(i) => `export { default as ${i.componentName} } from './${i.componentName}.svelte'`
+		);
+
+		fs.writeFileSync(export_path, exports_.join('\n'));
+	}
 }
 
 build();

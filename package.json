@@ -12,7 +12,7 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "eslint . --fix",
 		"generate:icons": "node ./scripts/generate-icons.mjs",
-		"cleanup": "rm -rf ./dist && find ./src/lib -name \"*.svelte\" -type f -exec rm -rf {} +",
+		"cleanup": "rm -rf ./dist && find ./src/lib -type f \\( -name \"*.svelte\" -o -name \"*.ts\" \\) -mindepth 2 -exec rm -rf {} +",
 		"generate": "npm run generate:icons && npm run format",
 		"update_version": "node ./scripts/update-package.mjs"
 	},
@@ -30,9 +30,17 @@
 		".": {
 			"types": "./dist/index.d.ts"
 		},
+		"./outline": {
+			"types": "./dist/outline/index.d.ts",
+			"default": "./dist/outline/index.js"
+		},
 		"./outline/*": {
 			"types": "./dist/outline/*.svelte.d.ts",
 			"svelte": "./dist/outline/*.svelte"
+		},
+		"./solid": {
+			"types": "./dist/solid/index.d.ts",
+			"default": "./dist/solid/index.js"
 		},
 		"./solid/*": {
 			"types": "./dist/solid/*.svelte.d.ts",
@@ -41,6 +49,7 @@
 	},
 	"files": [
 		"dist",
+		"!dist/**/.gitkeep",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
