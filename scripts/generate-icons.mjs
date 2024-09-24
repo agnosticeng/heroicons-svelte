@@ -1,11 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import url from 'node:url';
 import SVG from 'svgson';
 import { toPascalCase } from './utils/string.mjs';
 import { base64SVG } from './utils/svg.mjs';
 import { groupBy } from './utils/array.mjs';
 
-const ICONS_DIR = new URL(import.meta.resolve('heroicons/24')).pathname;
+const ICONS_DIR = url.fileURLToPath(import.meta.resolve('heroicons/24'));
 const OUTPUT_DIR = path.resolve(process.cwd(), './src/lib');
 
 /**
