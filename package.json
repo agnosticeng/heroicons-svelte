@@ -59,29 +59,29 @@
 		"registry": "https://npm.pkg.github.com"
 	},
 	"peerDependencies": {
-		"svelte": "^4.0.0"
+		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-cloudflare": "^4.7.2",
-		"@sveltejs/kit": "^2.5.28",
-		"@sveltejs/package": "^2.3.5",
-		"@sveltejs/vite-plugin-svelte": "^3.1.2",
+		"@sveltejs/adapter-cloudflare": "^4.7.4",
+		"@sveltejs/kit": "^2.7.3",
+		"@sveltejs/package": "^2.3.7",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"@types/eslint": "^9.6.1",
-		"eslint": "^9.10.0",
+		"eslint": "^9.13.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-prettier": "^5.2.1",
-		"eslint-plugin-svelte": "^2.44.0",
-		"globals": "^15.9.0",
+		"eslint-plugin-svelte": "^2.46.0",
+		"globals": "^15.11.0",
 		"heroicons": "^2.1.5",
 		"minimist": "^1.2.8",
 		"prettier": "^3.3.3",
-		"prettier-plugin-svelte": "^3.2.6",
-		"publint": "^0.2.11",
-		"svelte": "^4.2.19",
-		"svelte-check": "^4.0.2",
+		"prettier-plugin-svelte": "^3.2.7",
+		"publint": "^0.2.12",
+		"svelte": "^5.1.6",
+		"svelte-check": "^4.0.5",
 		"svgson": "^5.3.1",
-		"typescript": "^5.6.2",
-		"typescript-eslint": "^8.6.0",
-		"vite": "^5.4.6"
+		"typescript": "^5.6.3",
+		"typescript-eslint": "^8.12.2",
+		"vite": "^5.4.10"
 	}
 }

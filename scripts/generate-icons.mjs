@@ -48,11 +48,11 @@ function build() {
 <script lang="ts">
 		import type { SvelteHTMLElements } from 'svelte/elements';
 
-		type $$Props = Omit<SvelteHTMLElements['svg'], 'width' | 'height'> & {
+		type Props = Omit<SvelteHTMLElements['svg'], 'width' | 'height'> & {
 			size?: string | number | null
 		}
 
-		export let size: $$Props['size'] = 24
+		let { size = 24, ...rest }: Props = $props()
 </script>
 
 <!--
@@ -69,7 +69,7 @@ function build() {
 			.join('\n')}
 		width={size}
 		height={size}
-		{...$$restProps}
+		{...rest}
 		data-name="${icon.name}"
 >
 	${icon.children}
