@@ -75,7 +75,7 @@ function build() {
 	${icon.children}
 </svg>`;
 
-		fs.writeFileSync(path.join(OUTPUT_DIR, icon.type, icon.componentName + '.svelte'), component);
+		fs.writeFileSync(path.join(OUTPUT_DIR, icon.type, icon.name + '.svelte'), component);
 	});
 
 	const grouped = groupBy(icons, 'type');
@@ -86,7 +86,7 @@ function build() {
 		const export_path = path.join(OUTPUT_DIR, group, 'index.ts');
 
 		const exports_ = grouped_icons.map(
-			(i) => `export { default as ${i.componentName} } from './${i.componentName}.svelte'`
+			(i) => `export { default as ${i.componentName} } from './${i.name}.svelte'`
 		);
 
 		fs.writeFileSync(export_path, exports_.join('\n'));

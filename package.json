@@ -13,8 +13,7 @@
 		"format": "eslint . --fix",
 		"generate:icons": "node ./scripts/generate-icons.mjs",
 		"cleanup": "rm -rf ./dist && find ./src/lib -type f \\( -name \"*.svelte\" -o -name \"*.ts\" \\) -mindepth 2 -exec rm -rf {} +",
-		"generate": "npm run generate:icons && npm run format",
-		"update_version": "node ./scripts/update-package.mjs"
+		"generate": "npm run generate:icons && npm run format"
 	},
 	"repository": {
 		"type": "git",
